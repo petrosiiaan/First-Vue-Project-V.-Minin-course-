@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/theme.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container pt-5" id="app">
+        <div class="card">
+            <h1>{{title}}</h1>
+            <div class="form-control">
+                <input type="text" @keypress.enter="newNote" :placeholder="placeholderString" :value="inputValue" v-on:input="inputChangeHandler" />
+            </div> 
+            <h1>Input Value: {{ inputValue }}</h1>
+            <button class="btn" @click="newNote">Add</button>
+            <hr>
+
+            <ul class="list" v-if="notes.name.length !== 0">
+                <li class="list-item" v-for="(note, id) in notes.name">
+                    {{ id + 1}}  {{ note }}
+                    <button class="btn danger" @click="deleteItem">Delete</button>
+                </li>
+                <hr>
+                <li>Your Length of notes is {{ notes.name.length }} </li>
+            </ul>
+            <div v-else>
+                <h2>No notes yet. Please Add your notes</h2>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
